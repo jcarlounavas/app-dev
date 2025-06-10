@@ -16,7 +16,7 @@
         <div class = "row py-lg 5">
             <div class="col-lg-6 col-md-8 mx-auto">
 
-            <form action="" method="POST" class="p-5 border-primary rounded-3 shadow-lg">
+            <form action="{{route('registered') }}" method="POST" class="p-5 border-primary rounded-3 shadow-lg">
             @csrf
                 <h1 class="mb-2">Registration</h1>
             <div class="row align-items-center mb-3">
@@ -24,7 +24,7 @@
                 <label for="name" class="form-label mb-0">Name</label>
                 </div>
                 <div class="col-8">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your name" required />
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required />
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
                 <label for="username" class="form-label mb-0">Username</label>
                 </div>
                 <div class="col-8">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required />
+                <input type="email" class="form-control" id="username" name="username" placeholder="Enter your username" required />
                 </div>
             </div>
 
@@ -46,14 +46,7 @@
                 </div>
             </div>
 
-                        <div class="row align-items-center mb-3">
-                <div class="col-4 text-end">
-                <label for="password" class="form-label mb-0">Confirm Password</label>
-                </div>
-                <div class="col-8">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Confirm your password" required />
-                </div>
-            </div>
+                    
 
             <div class="text-center">
                 <button class="btn btn-primary mt-3" id="submitConfession">Register</button>
@@ -61,6 +54,11 @@
             </form>
 
             </div>
+             @if(session('message'))
+                    <div style="background: #d4edda; color: #155724; padding: 10px; margin-bottom: 10px; border: 1px solid #c3e6cb;">
+                        {{ session('message') }}
+                    </div>
+                @endif
         </div>
     </main>
   
