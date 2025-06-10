@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confession</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</head>
+<body>
+<main class = "py-5 text-center container">
+    <div class = "row py-lg 5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <textarea class="form-control" id="confession" name="confession" rows="4" placeholder="Write anonymously..." ></textarea>
+          <input type="text" class="form-control mt-3  center" id="username" name="usernamename" placeholder="Your Receiver's Username (Example: @username)" />
+          <button class="btn btn-primary mt-3" id="submitConfession">Submit</button>
+          <p>
+            <a href="/login"class="btn btn-secondary mt-5" id="viewConfessions">Log in here</a>
+            <a href="/register" class="btn btn-secondary mt-5" id="viewConfessions">Register Here</a>
+          </p>
+        </div>
+    </div>
+
+  </main>
+</body>
+</html>
