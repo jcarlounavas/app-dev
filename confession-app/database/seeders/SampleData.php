@@ -15,17 +15,13 @@ class SampleData extends Seeder
     public function run(): void
     {
         //
-        /*ConfessModel::create([
-            'name' => 'John Doe',
+        ConfessModel::create([
+            'user_id' => '1',
             'confess' => 'I have a secret crush on my best friend.',
         ]);
-       */
+        
+       
 
-       UserConfession::create([
-            'name' => 'Admin',
-            'username' => 'admin',
-            'password' => bcrypt('admin123'),
-        ]);
 
     }
 }

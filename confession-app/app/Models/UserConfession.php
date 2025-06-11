@@ -12,4 +12,5 @@ class UserConfession extends Authenticatable
     protected $fillable = ['name', 'username', 'password'];
     protected $hidden = ['password', 'remember_token'];
     public $timestamps = true;
+
 }

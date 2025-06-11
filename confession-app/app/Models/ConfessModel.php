@@ -8,6 +8,15 @@ class ConfessModel extends Model
 {
     //
     protected $table = 'confessions';
-    protected $fillable = ['name', 'confess'];
+    protected $fillable = ['user_id', 'confess'];
     public $timestamps = true;
+
+    public function user()
+    {
+        return $this->belongsTo(UserConfession::class, 'user_id');
+    }
+
+    
 }
+
+

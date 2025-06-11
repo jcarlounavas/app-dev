@@ -3,54 +3,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Confession Wall</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/confession.css">
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-  <title>Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5f7ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .login-container {
+        width: 100%;
+        max-width: 500px;
+        padding: 2rem;
+    }
+    .login-form {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+    .form-title {
+        color: #2d3748;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+    }
+    .form-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+        border-radius: 2px;
+    }
+    .form-control {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    .form-control:focus {
+        border-color: #6B73FF;
+        box-shadow: 0 0 0 3px rgba(107, 115, 255, 0.1);
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+        border: none;
+        padding: 0.8rem 2rem;
+        font-weight: 500;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-label {
+        color: #4a5568;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+    .error-message {
+        color: #e53e3e;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+    .register-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #4a5568;
+    }
+    .register-link a {
+        color: #000DFF;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+    .input-group-text {
+        background: transparent;
+        border: 1px solid #e2e8f0;
+        border-right: none;
+        color: #4a5568;
+    }
+    .input-group .form-control {
+        border-left: none;
+    }
+    .input-group .form-control:focus {
+        border-left: none;
+    }
+    @media (max-width: 576px) {
+        .login-container {
+            padding: 1rem;
+        }
+        .login-form {
+            padding: 1.5rem;
+        }
+    }
+  </style>
 </head>
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
-    <main class="py-5 text-center container">
-        <div class="row py-lg 5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                <form method="POST" action="{{ route('login') }}" class="p-5 border-primary rounded-3 shadow-lg">
-                    @csrf
-                    <h1 class="mb-2">Log in</h1>
-
-                    <div class="row align-items-center mb-3">
-                        <div class="col-4 text-end">
-                            <label for="username" class="form-label mb-0">Username</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required />
-                        </div>
-                    </div>
-
-                    <div class="row align-items-center mb-3">
-                        <div class="col-4 text-end">
-                            <label for="password" class="form-label mb-0">Password</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required />
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary mt-3">Log-In</button>
-                    </div>
-                </form>
+<body>
+<main class="login-container">
+    <div class="login-form">
+        <h2 class="form-title">Welcome Back</h2>
+        
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
+        @endif
+
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div class="form-group">
+                <label for="username" class="form-label">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <input type="text" 
+                           class="form-control" 
+                           id="username" 
+                           name="username" 
+                           placeholder="Enter your username" 
+                           required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                    <input type="password" 
+                           class="form-control" 
+                           id="password" 
+                           name="password" 
+                           placeholder="Enter your password" 
+                           required />
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-sign-in-alt me-2"></i>Log In
+            </button>
+        </form>
+
+        <div class="register-link">
+            Don't have an account? <a href="{{ route('register') }}">Register here</a>
         </div>
-    </main>
+    </div>
+</main>
 </body>
 </html>

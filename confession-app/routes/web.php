@@ -11,6 +11,10 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('Confession.main');
 })->name('home');
+Route::post('/home', [App\Http\Controllers\ConfessController::class, 'store'])->name('confess.store');
+
+// Add user-specific confession route
+Route::get('/confess/{username}', [App\Http\Controllers\ConfessController::class, 'showConfessForm'])->name('confess.form');
 
 //Log in Page route sa Confession Website
 Route::get('/logging-page', function () {
@@ -38,3 +42,4 @@ Route::post('/logout', [App\Http\Controllers\UserConfessionController::class, 'l
 Route::middleware([RedirectIfNotAuthenticated::class])->group(function(){
     Route::get('/dashboard', [App\Http\Controllers\ConfessController::class, 'index'])->name('dashboard');
 });
+

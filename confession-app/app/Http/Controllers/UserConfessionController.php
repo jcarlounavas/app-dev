@@ -6,6 +6,7 @@ use App\Models\UserConfession;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Http;
 
 class UserConfessionController extends Controller
@@ -34,12 +35,14 @@ class UserConfessionController extends Controller
     }
 
     public function login(Request $request){
-
         $credential = $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
         ]);
         if (Auth::attempt($credential)) {
+            $user = Auth::user();
+            Session::put('username', $request->username);
+            Session::put('name', $user->name);
             return redirect()->route('dashboard')->with('success', 'Login successful.');
         }
         return back()->withErrors([
