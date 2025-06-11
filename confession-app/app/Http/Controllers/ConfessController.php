@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ConfessModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ConfessController extends Controller
 {

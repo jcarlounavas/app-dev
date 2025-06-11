@@ -26,14 +26,13 @@
 <body>
 <main>
     <div class="nav justify-content-end bg text-bg-secondary p-2">
-    <div class="dropdown mt-2 ">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-        Settings
-    </button>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Setting</a></li>
-        <li><a class="dropdown-item" href="#">Log Out</a></li>
-    </ul>
+    <div class="mt-2 ">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+                <button type="submit" class="btn btn-primary" >
+                    Log out
+                </button>
+        </form>
     </div>
 </div>
         <div class="container">

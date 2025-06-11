@@ -8,44 +8,49 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
   <title>Login Page</title>
-
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
-
-    <main class = "py-5 text-center container">
-        <div class = "row py-lg 5">
+    <main class="py-5 text-center container">
+        <div class="row py-lg 5">
             <div class="col-lg-6 col-md-8 mx-auto">
-            <form action="" method="POST" class="p-5 border-primary rounded-3 shadow-lg">
-            @csrf
-                <h1 class="mb-2">Log in </h1>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-            <div class="row align-items-center mb-3">
-                <div class="col-4 text-end">
-                <label for="username" class="form-label mb-0">Username</label>
-                </div>
-                <div class="col-8">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required />
-                </div>
-            </div>
+                <form method="POST" action="{{ route('login') }}" class="p-5 border-primary rounded-3 shadow-lg">
+                    @csrf
+                    <h1 class="mb-2">Log in</h1>
 
-            <div class="row align-items-center mb-3">
-                <div class="col-4 text-end">
-                <label for="password" class="form-label mb-0">Password</label>
-                </div>
-                <div class="col-8">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required />
-                </div>
-            </div>
+                    <div class="row align-items-center mb-3">
+                        <div class="col-4 text-end">
+                            <label for="username" class="form-label mb-0">Username</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required />
+                        </div>
+                    </div>
 
-            <div class="text-center">
-                <button class="btn btn-primary mt-3" id="submitConfession">Log-In</button>
-            </div>
-            </form>
+                    <div class="row align-items-center mb-3">
+                        <div class="col-4 text-end">
+                            <label for="password" class="form-label mb-0">Password</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required />
+                        </div>
+                    </div>
 
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Log-In</button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
-  
-
 </body>
 </html>

@@ -16,7 +16,7 @@
           <input type="text" class="form-control mt-3  center" id="username" name="usernamename" placeholder="Your Receiver's Username (Example: @username)" />
           <button class="btn btn-primary mt-3" id="submitConfession">Submit</button>
           <p>
-            <a href="/login"class="btn btn-secondary mt-5" id="viewConfessions">Log in here</a>
+            <a href="/logging-page"class="btn btn-secondary mt-5" id="viewConfessions">Log in here</a>
             <a href="/register" class="btn btn-secondary mt-5" id="viewConfessions">Register Here</a>
           </p>
         </div>

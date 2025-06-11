@@ -15,8 +15,17 @@
     <main class = "py-5 text-center container">
         <div class = "row py-lg 5">
             <div class="col-lg-6 col-md-8 mx-auto">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-            <form action="{{route('registered') }}" method="POST" class="p-5 border-primary rounded-3 shadow-lg">
+            <form action="{{route('registered.user') }}" method="POST" class="p-5 border-primary rounded-3 shadow-lg">
             @csrf
                 <h1 class="mb-2">Registration</h1>
             <div class="row align-items-center mb-3">
@@ -33,7 +42,7 @@
                 <label for="username" class="form-label mb-0">Username</label>
                 </div>
                 <div class="col-8">
-                <input type="email" class="form-control" id="username" name="username" placeholder="Enter your username" required />
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required />
                 </div>
             </div>
 
@@ -45,6 +54,8 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required />
                 </div>
             </div>
+
+
 
                     
 
