@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfNotAuthenticated;
 
+Route::get('/', function () {
+    return redirect()->route('home');
+});
 
 //Main Page route sa Confession Website
 Route::get('/home', function () {
