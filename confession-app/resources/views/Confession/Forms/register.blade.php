@@ -208,7 +208,7 @@
         </form>
 
         <div class="login-link">
-            Already have an account? <a href="{{ route('login') }}">Log in here</a>
+            Already have an account? <a href="{{ route('logging-page') }}">Log in here</a>
         </div>
     </div>
 </main>
