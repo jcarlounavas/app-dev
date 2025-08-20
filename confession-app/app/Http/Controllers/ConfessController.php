@@ -44,8 +44,17 @@ class ConfessController extends Controller
             'confess' => $request->confess,
             'user_id' => $user->id
         ]);
-
+        
         return redirect()->route('home')->with('success', 'Confession submitted successfully.');
+    }
+    
+    //Delete Function
+    public function delete(Request $request){
+        
+        $user = Auth::user();
+        $cons = ConfessModel::where('user_id', $user->id)->get();
+
+        
     }
 
 }
