@@ -1,12 +1,14 @@
+# Use PHP 8.2 FPM base image
 FROM php:8.2-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git curl libpng-dev libonig-dev libxml2-dev zip unzip libzip-dev \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+    && docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd zip \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
-COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set working directory
 WORKDIR /var/www
@@ -14,15 +16,14 @@ WORKDIR /var/www
 # Copy project files
 COPY . .
 
-# Install dependencies
+# Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev
 
-# Permissions
+# Set permissions for storage and bootstrap/cache
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
-# Expose port
+# Expose port 8000
 EXPOSE 8000
 
 # Start Laravel
 CMD php artisan serve --host=0.0.0.0 --port=8000
-
