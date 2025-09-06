@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\ConfessModel;
 use App\Models\UserConfession;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -25,7 +24,7 @@ class ConfessController extends Controller
         if (!$user) {
             return redirect()->route('home')->withErrors(['username' => 'User not found.']);
         }
-        return view('Confession.forms.confess', compact('username'));
+        return view('Confession.Forms.confess', compact('username'));
     }
 
     public function store(Request $request)
@@ -35,7 +34,8 @@ class ConfessController extends Controller
             'username' => 'required|string',
         ]);
 
-        $user = UserConfession::where('username', $request->username)->first();
+        $normalizedUsername = ltrim($request->username, '@');
+        $user = UserConfession::where('username', $normalizedUsername)->first();
         if(!$user) {
             return redirect()->back()->withErrors(['username' => 'User not found.']);
         }

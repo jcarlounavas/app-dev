@@ -27,10 +27,7 @@ Route::post('/login', [App\Http\Controllers\UserConfessionController::class, 'lo
 Route::get('/register', [App\Http\Controllers\UserConfessionController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [App\Http\Controllers\UserConfessionController::class, 'registration'])->name('registered.user');
 
-//User's Confession Page route sa Confession Website
-Route::get('/confession', function () {
-    return view('Confession.Forms.confess');
-});
+// Removed broken route that rendered confess form without a username
 
 
 
