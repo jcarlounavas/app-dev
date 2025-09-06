@@ -140,7 +140,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('registered.user') }}">
             @csrf
             <div class="form-group">
                 <label for="name" class="form-label">Name</label>
